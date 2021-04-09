@@ -17,3 +17,12 @@ function greetPeople(people) {
   */
   var mentors = ['Irina', 'Ashleigh', 'Etza'];
   var result = greetPeople(mentors)
+  console.log(result, mentors);
+
+  /*
+ Hello Irina
+ Hello IrinaAshleigh
+ Hello IrinaAshleighEtza
+
+ Result => Hello IrinaAshleighEtza
+  */
