@@ -53,9 +53,9 @@ function financialSummary(salary, taxCode, incomeTax, otherIncomeTax) {  // chan
 
 
   return (
-    "Your gross income is �" +
+    "Your gross income is � " +
     originalSalary.toString() +
-    " and your net income is �" +
+    " and your net income is � " + 
     salary.toString() +
     "."
   );
