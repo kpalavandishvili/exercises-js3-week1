@@ -1,12 +1,20 @@
-function greetPeople(people) {
-  var greeting = "He";
+const greetPeople = (people) => {
+  let greeting = "He";
   greeting = greeting + "llo";
   greeting = greeting + " ";
 
-  people.forEach(function(person) {
-    greeting = greeting + person;
-	console.log(greeting);
-  });
+  for (const key in people) {
+      const person = people[key];
+      if ( key == people.length - 1 ) {
+        greeting = `${greeting} ${person}.`;
+      } else if ( key == people.length - 2 ) {
+        greeting = `${greeting} ${person} &`;
+      } else {
+        greeting = `${greeting} ${person},`;
+      }
+
+	    console.log(greeting);
+  }
 
   return greeting;
 }
@@ -15,14 +23,15 @@ function greetPeople(people) {
   Let's trace this piece of code - what is the value of result with this input
   
   */
-  var mentors = ['Irina', 'Ashleigh', 'Etza'];
-  var result = greetPeople(mentors)
-  console.log(result, mentors);
+  const mentors = ['Irina', 'Ashleigh', 'Etza', 'Frederico', 'Guido'];
+  const result = greetPeople(mentors);
 
   /*
- Hello Irina
- Hello IrinaAshleigh
- Hello IrinaAshleighEtza
+Hello  Irina,
+ Hello  Irina, Ashleigh,
+ Hello  Irina, Ashleigh, Etza,
+ Hello  Irina, Ashleigh, Etza, Frederico &
 
- Result => Hello IrinaAshleighEtza
+ Result =>
+ Hello  Irina, Ashleigh, Etza, Frederico & Guido.
   */

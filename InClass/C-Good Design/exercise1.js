@@ -4,7 +4,7 @@
 
 1. Naming: the function has a bad name, myFunction() tells you nothing about
    what the function does. It's also considered bad practice to name variables
-   vaguely by separating them through numbers (incomeTax1, incomeTax2, etc). If
+   vaguely by separating them through numbers (incomeTax1, otherIncomeTax, etc). If
    you find yourself doing this then you should either use an array (such as
    incomeTax[]).
 
@@ -40,33 +40,41 @@
    */
 
 
-function myFunction(salary, taxCode, incomeTax1, incomeTax2, ownsCar) {
-  var totalIncomeTax = incomeTax1 + incomeTax2;
+function financialSummary(salary, taxCode, incomeTax, otherIncomeTax) {  // change
+  var totalIncomeTax = incomeTax + otherIncomeTax;
   var studentLoan = (salary - 17775) * 0.09;
   var originalSalary = salary;
-  var nationalInsurance = null;
-
-  if (taxCode === "1150L") {
-    nationalInsurance = salary * 0.1;
-  } else if (taxCode === "ST") {
-    nationalInsurance = salary * 0.05;
-  } else {
-    nationalInsurance = salary * 0.08;
-  }
-
+  var nationalInsurance = calculateInsurance(taxCode,salary);
   var deductions = [nationalInsurance, totalIncomeTax, studentLoan];
 
-  salary = salary - deductions[0];
-  salary = salary - deductions[1];
-  salary = salary - deductions[2];
+   for (let i = 0; i < deductions.length; i++) {
+      salary = salary - deductions[i];
+   }
+
 
   return (
-    "Your gross income is £" +
+    "Your gross income is ï¿½" +
     originalSalary.toString() +
-    " and your net income is £" +
+    " and your net income is ï¿½" +
     salary.toString() +
     "."
   );
 }
 
-console.log(myFunction(28000, "1150L", 1000, 580, false));
+function calculateInsurance(taxCode,salary) {
+   var nationalInsurance =null; 
+   if (taxCode === "1150L") {
+      nationalInsurance = salary * 0.1;
+    } else if (taxCode === "ST") {
+      nationalInsurance = salary * 0.05;
+    } else {
+      nationalInsurance = salary * 0.08;
+    }
+    
+    return nationalInsurance;
+   
+}
+
+
+
+console.log(financialSummary(28000, "1150L", 1000, 580, false));

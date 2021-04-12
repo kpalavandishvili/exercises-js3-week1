@@ -3,7 +3,7 @@
 //   return "es6 is awesome!";
 // }
 const arrow = () => "es6 is awesome!";
-console.log("es6 is awesome!");
+console.log(arrow());
 
 
 //Use the es6 syntax for default parameter
@@ -12,7 +12,7 @@ console.log("es6 is awesome!");
 //   return name;
 // }
 const defaultParameter = (name = "sam") => name;
-console.log("sam");
+console.log(defaultParameter());
 
 
 // Use the spread operator to combine arr1 and arr2
@@ -28,6 +28,7 @@ console.log("this is spread operator");
 // }
 const destructuring = (obj) => {
   const { cyf } = obj;
+  return cyf;
 }
 console.log("this returns object's cyf property");
 
